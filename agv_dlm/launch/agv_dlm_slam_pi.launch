@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find agv_dlm)/launch/agv_dlm_bringup.launch" />
+	<include file="$(find agv_dlm)/launch/agv_dlm_navigation.launch" />
+
+					<!--  ************** gmapping ***************  -->
+	<node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen"/>
+</launch>

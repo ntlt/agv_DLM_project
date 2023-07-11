@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  
+  <include file="$(find agv_DLM)/launch/agv_DLM_bringup.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find agv_dlm)/cfg/rviz_slam_base_local_planner.rviz" required="true" />
+  
+
+  <node name="telop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py">
+		<!--<remap from="/cmd_vel" to="/mobile_robot/mobile_base_controller/cmd_vel"/> -->
+  </node>
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="map_update_interval" value="5.0"/>
+	<param name="maxUrange" value="6.0"/>
+    <param name="maxRange" value="8.0"/>
+    <param name="linearUpdate" value="0.05"/>
+	<param name="angularUpdate" value="0.5"/>
+  </node>
+   
+</launch>
